@@ -1,0 +1,101 @@
+.sheet-section {
+  padding: 80px 40px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.sheet-section h2 {
+  font-size: 2.5rem;
+  color: #2d3436;
+  margin-bottom: 10px;
+}
+
+.sheet-section p {
+  font-size: 1.1rem;
+  color: #636e72;
+  margin-bottom: 40px;
+}
+
+.sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5개씩 정렬 */
+  gap: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+}
+
+.sheet-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sheet-card:hover {
+  transform: translateY(-5px);
+}
+
+.sheet-card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.sheet-card h3 {
+  margin: 4px 0;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* 첫 번째 줄 - 시즌 정보 (조금 더 얌전하게) */
+.sheet-card h3:first-of-type {
+  font-size: 1.1rem;
+  color: #636e72;
+  font-weight: 500;
+}
+
+/* 두 번째 줄 - 제목 강조 */
+.sheet-card h3:last-of-type {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #0984e3;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  background-color: #74b9ff;
+}
+
+/* 페이지네이션 버튼 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  background-color: #dfe6e9;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.pagination button.active {
+  background-color: #0984e3;
+  color: white;
+}

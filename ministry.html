@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>OBED Worship - 사역</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/ministry.css">
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="logo-area">
+      <a href="index.html">
+        <img src="image/Log.png" alt="OBED Worship 로고" width="120" />
+      </a>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="team.html">팀소개</a></li>
+        <li><a href="ministry.html">사역</a></li>
+        <li><a href="sheet.html">악보</a></li>
+        <li><a href="map.html">찾아오시는 길</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 사역 목록 -->
+  <section class="season-gallery">
+    <!-- 사역 추가 -->
+
+    <!-- 25Season1-->
+    <div class="season-card-horizontal" onclick="openGallery('25season1')">
+      <div class="season-img-wrapper">
+        <img src="image/oneness.png" alt="Season 1 - 하나됨">
+      </div>
+      <div class="season-info">
+        <h3>2025년 Season 1 - “하나됨”</h3>
+        <p>
+          우리는 한 몸 아래 하나님께 예배하는 예배팀이 되길 원하며<br>
+          하나됨을 통해 교회를 섬기고, 교회를 넘어 열방을 섬기길 원합니다.<br/><br/>
+          우리가 다 하나님의 아들을 믿는 것과 아는 일에 하나가 되어<br/>
+          온전한 사람을 이루어 그리스도의 장성한 분량이 충만한 데까지 이르리니<br/>
+          - 에베소서 4:13 -
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 팝업 갤러리 -->
+  <div id="galleryPopup" class="gallery-popup">
+    <span class="close" onclick="closeGallery()">&times;</span>
+    <div class="gallery-content" id="galleryContent">
+      <!-- 큰 이미지 및 썸네일 동적 생성 -->
+    </div>
+  </div>
+
+  <script>
+    const galleryImages = {
+      //25season1 사역 사진들
+      "25season1": [
+        'image/preparation.JPG',
+        'image/1.jpeg',
+        'image/2.jpeg',
+        'image/3.jpeg',
+        'image/4.jpeg',
+        'image/5.jpeg'
+      ]
+      //사역 그림 추가
+    };
+
+    let currentSeason = null;
+    let currentIndex = 0;
+
+    function openGallery(seasonKey) {
+      currentSeason = seasonKey;
+      currentIndex = 0;
+      updateGalleryImage();
+      document.getElementById('galleryPopup').style.display = 'flex';
+      document.addEventListener('keydown', handleKey);
+    }
+
+    function closeGallery() {
+      document.getElementById('galleryPopup').style.display = 'none';
+      document.removeEventListener('keydown', handleKey);
+    }
+
+    function updateGalleryImage() {
+      const container = document.getElementById('galleryContent');
+      container.innerHTML = '';
+
+      const img = document.createElement('img');
+      img.src = galleryImages[currentSeason][currentIndex];
+      img.className = 'main-gallery-img';
+      container.appendChild(img);
+
+      const thumbContainer = document.createElement('div');
+      thumbContainer.className = 'thumbnail-list';
+
+      galleryImages[currentSeason].forEach((src, i) => {
+        const thumb = document.createElement('img');
+        thumb.src = src;
+        thumb.className = 'thumbnail-img';
+        if (i === currentIndex) thumb.classList.add('active');
+        thumb.onclick = () => {
+          currentIndex = i;
+          updateGalleryImage();
+        };
+        thumbContainer.appendChild(thumb);
+      });
+
+      container.appendChild(thumbContainer);
+    }
+
+    function handleKey(e) {
+      if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'Escape') {
+        closeGallery();
+      }
+    }
+
+    function nextImage() {
+      if (currentIndex < galleryImages[currentSeason].length - 1) {
+        currentIndex++;
+        updateGalleryImage();
+      }
+    }
+
+    function prevImage() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateGalleryImage();
+      }
+    }
+  </script>
+</body>
+</html>

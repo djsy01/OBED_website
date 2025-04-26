@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>OBED Worship - 악보</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/sheet.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo-area">
+      <a href="index.html">
+        <img src="image/Log.png" alt="OBED Worship 로고" width="120" />
+      </a>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="team.html">팀소개</a></li>
+        <li><a href="ministry.html">사역</a></li>
+        <li><a href="sheet.html">악보</a></li>
+        <li><a href="map.html">찾아오시는 길</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="sheet-section">
+    <h2>악보 자료실</h2>
+    <p>악보를 클릭하면 PDF로 열리며 다운로드도 가능합니다.</p>
+
+    <!-- ... 복사하여 총 20개 이상 넣기 ... -->
+
+
+    <!-- 25season1 - 하나됨 -->
+    <div class="sheet-grid" id="sheetContainer">
+      <!-- 아래 항목을 복사해서 20개 넘게 추가 가능 -->
+      <div class="sheet-card">
+        <img src="image/oneness.png" alt="악보 아이콘" />
+        <h3>2025년 Season1</h3>
+        <h3>하나됨</h3>
+        <a href="pdf/oneness.pdf" target="_blank" download class="btn">PDF 보기</a>
+      </div>
+    </div>
+
+    <!-- 페이지 버튼 -->
+    <div class="pagination" id="pagination"></div>
+  </section>
+
+  <script>
+    const cardsPerPage = 20;
+    const sheetContainer = document.getElementById('sheetContainer');
+    const pagination = document.getElementById('pagination');
+    const allCards = Array.from(sheetContainer.children);
+    const totalPages = Math.ceil(allCards.length / cardsPerPage);
+
+    function showPage(page) {
+      allCards.forEach((card, index) => {
+        card.style.display =
+          index >= (page - 1) * cardsPerPage && index < page * cardsPerPage
+            ? 'block'
+            : 'none';
+      });
+
+      // 페이지 버튼 스타일 업데이트
+      Array.from(pagination.children).forEach((btn, i) => {
+        btn.classList.toggle('active', i + 1 === page);
+      });
+    }
+
+    function createPagination() {
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.addEventListener('click', () => showPage(i));
+        pagination.appendChild(btn);
+      }
+    }
+
+    createPagination();
+    showPage(1);
+  </script>
+</body>
+</html>

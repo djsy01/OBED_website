@@ -1,0 +1,43 @@
+/* 헤더 전체 */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    padding: 40px 0 20px 0;
+  }
+  
+  /* 로고 영역 */
+  .logo-area {
+    margin-bottom: 20px;
+  }
+  
+  /* 네비게이션 바 */
+  .main-nav {
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+  }
+  
+  .main-nav li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .main-nav li a:hover {
+    color: #4b7bec;
+  }
+  
